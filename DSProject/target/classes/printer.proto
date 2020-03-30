@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "PrinterServiceImpl";
+option java_package = "dsproject.printer";
+
+
+package printer;
+
+// Interface exported by the server.
+service PrinterService {
+  
+  rpc turnOn(StringRequest) returns (StringResponse) {}
+  rpc turnOff(StringRequest) returns (StringResponse) {}
+  rpc getStatus(StringRequest) returns (StringResponse) {}
+  rpc Print(MultiStringRequest) returns (StringResponse) {}
+
+}
+
+message LengthResponse {
+  int32 length = 1;
+}
+
+message ReplaceRequest {
+  string text = 1;
+  string char = 2; 
+}
+
+message StringRequest {
+    string val = 1;
+}
+
+message StringResponse {
+    string val = 1;
+}
+
+message MultiStringRequest {
+  repeated string text = 1;
+}
+
+message MultiStringResponse {
+  repeated StringRequest multiresponse = 1;
+}
+
